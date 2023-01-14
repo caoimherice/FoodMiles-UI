@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       'userId': userId1
     }
     const headerDict = {
-      'Content-Type': 'application/json'
+      //'Content-Type': 'application/json'
     }
 
     const requestOptions = {
