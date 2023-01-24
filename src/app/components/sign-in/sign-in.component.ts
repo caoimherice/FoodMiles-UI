@@ -22,8 +22,16 @@ export class SignInComponent {
     this.cognitoService.signIn(this.user)
       .then(() => {
         this.router.navigate(['/profile']);
+
+
+        this.cognitoService.getSession()
+          .then(session => {
+            console.log(session.getAccessToken());
+          })
+
       }).catch(() => {
       this.loading = false;
     });
+
   }
 }

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "./register.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {CognitoService} from "../../cognito.service";
+
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  constructor(public fb: FormBuilder, private http: HttpClient) {
+  constructor(public fb: FormBuilder, private http: HttpClient,  private cognitoService: CognitoService) {
     this.form = this.fb.group({
       name: [''],
       userId: [null],
@@ -27,12 +29,18 @@ export class RegisterComponent implements OnInit {
       'name': name1,
       'userId': userId1
     }
-    const headerDict = {
-      //'Content-Type': 'application/json'
-    }
+
+    let headers;
+
+    this.cognitoService.getSession()
+      .then(session => {
+        headers = new HttpHeaders ({
+          Authorization: 'Bearer ' + session.getAccessToken()
+        })
+      });
 
     const requestOptions = {
-      headers: new HttpHeaders(headerDict),
+      headers: headers,
     };
     // @ts-ignore
     //formData.append('name', this.form.get('name').value);
