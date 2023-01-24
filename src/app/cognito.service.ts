@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Amplify, Auth } from 'aws-amplify';
+import { CognitoUserSession } from 'amazon-cognito-identity-js'
 
 export interface IUser {
   email: string;
@@ -71,6 +72,10 @@ export class CognitoService {
 
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
+  }
+
+  public getSession(): Promise<CognitoUserSession> {
+    return Auth.currentSession()
   }
 
   public updateUser(user: IUser): Promise<any> {
