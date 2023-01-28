@@ -14,6 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
+import { DisplayItemComponent } from './components/display-item/display-item.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
     SignUpComponent,
     SignInComponent,
     ProfileComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    DisplayItemComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule,
