@@ -87,7 +87,7 @@ export class SearchItemComponent implements OnInit {
         // const requestOptions = {
         //   headers: headers,
         // };
-        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken());
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken());
         console.log(headers)
         this.http
           .post('https://gjru6axeok.execute-api.us-east-1.amazonaws.com/users', data, {headers})
