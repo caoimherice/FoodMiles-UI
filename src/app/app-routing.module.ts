@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {SearchItemComponent} from "./components/search-item/search-item.component";
 // const routes: Routes = [
 //   { path: '', pathMatch: 'full', redirectTo: 'login' },
 //   { path: 'login', component: LogInComponent },
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'signUp',
     component: SignUpComponent,
+  },
+  {
+    path: 'searchItem',
+    component: SearchItemComponent,
   },
   {
     path: '**',
