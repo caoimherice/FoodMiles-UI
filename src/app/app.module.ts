@@ -16,6 +16,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { DisplayItemComponent } from './components/display-item/display-item.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { SavedListComponent } from './components/saved-list/saved-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
     ProfileComponent,
     SearchItemComponent,
     DisplayItemComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    SavedListComponent
   ],
   imports: [
     BrowserModule,

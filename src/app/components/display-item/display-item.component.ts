@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { SearchItemComponent} from "../search-item/search-item.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CognitoService} from "../../cognito.service";
@@ -16,6 +16,9 @@ DisplayItemComponent implements OnInit{
   // origin: any;
   // miles: any;
   food:any;
+
+  @Input()
+  foodInfo: any;
   constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute, private cognitoService: CognitoService) {
   }
 

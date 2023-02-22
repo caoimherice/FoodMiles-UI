@@ -1,34 +1,48 @@
-<div class="container">
-  <div class="body d-md-flex align-items-center justify-content-between">
-    <div class=" box-2 d-flex flex-column h-100">
-      <div class="mt-5">
-        <p class="mb-1 h-1">Search item</p>
-        <p class="text-muted mb-2">Search food item to view its food miles</p>
-        <div class="card-body">
-          <div class="row">
-            <div class="col mb-2">
-              <div class="col mb-2"  style="padding: 30px">
-                <label for="name" class="form-label">Food:</label>
-                <input type="name" id="name" name="name" #name="ngModel" [(ngModel)]="food.name" class="form-control form-control-sm">
-              </div>
-              <div class="row">
-                <div class="col mb-2" style ="padding: 30px">
-                  <label for="origin" class="form-label">Origin:</label>
-                  <input type="origin" id="origin" name="origin" #origin="ngModel" [(ngModel)]="food.origin" class="form-control form-control-sm">
+<div class="container p-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+              <h3 class="card-title">Search item</h3>
+              <h6 class="card-subtitle text-muted pb-4">Search food item to view its food miles</h6>
+
+              <form class="row form-horizontal" [formGroup]="searchItemForm" (ngSubmit)="onSubmit()">
+                <div class="col">
+                  <div class="row">
+                    <div class="col-2">
+                      <label for="name">Food: </label>
+                    </div>
+                    <div class="col-10">
+                      <input id="name" type="text" class="form-control" formControlName="name">
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col d-grid" style ="padding: 30px">
-                  <button type="button" (click)="searchItem()" class="btn btn-sm" style="background-color: #EACBBF">
-  <!--                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
-                    Search Item
-                  </button>
+                <div class="col">
+                  <div class="row">
+                    <div class="col-2">
+                      <label for="origin">Origin: </label>
+                    </div>
+                    <div class="col-10">
+                      <input id="origin" type="text" class="form-control" formControlName="origin">
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div class="col d-grid">
+                  <button type="submit" class="btn btn-sm" style="background-color: #EACBBF">Search Item</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <app-display-item [foodInfo]="foodInfo"></app-display-item>
+      </div>
+    </div>
+    <div class="col-4">
+      <app-shopping-list></app-shopping-list>
     </div>
   </div>
 </div>
