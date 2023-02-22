@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CognitoService } from './cognito.service';
+import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

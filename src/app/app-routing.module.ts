@@ -9,6 +9,7 @@ import {SearchItemComponent} from "./components/search-item/search-item.componen
 import {DisplayItemComponent} from "./components/display-item/display-item.component";
 import {ShoppingListComponent} from "./components/shopping-list/shopping-list.component";
 import {SavedListComponent} from "./components/saved-list/saved-list.component";
+import {MapComponent} from "./components/map/map.component";
 const routes: Routes = [
   {
     path: '',
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'savedList',
     component: SavedListComponent,
+  },
+  {
+    path: 'map',
+    component: MapComponent,
   },
   {
     path: '**',
