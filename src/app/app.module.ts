@@ -15,7 +15,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { DisplayItemComponent } from './components/display-item/display-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { SavedListComponent } from './components/saved-list/saved-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     ProfileComponent,
     SearchItemComponent,
     DisplayItemComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    SavedListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,4 +44,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+
+export class AppModule {
+
+}

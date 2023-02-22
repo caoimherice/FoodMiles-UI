@@ -7,12 +7,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {SearchItemComponent} from "./components/search-item/search-item.component";
 import {DisplayItemComponent} from "./components/display-item/display-item.component";
-// const routes: Routes = [
-//   { path: '', pathMatch: 'full', redirectTo: 'login' },
-//   { path: 'login', component: LogInComponent },
-//   { path: 'register', component: RegisterComponent },
-//   { path: 'signup', component: SignUpComponent }
-// ];
+import {ShoppingListComponent} from "./components/shopping-list/shopping-list.component";
+import {SavedListComponent} from "./components/saved-list/saved-list.component";
 const routes: Routes = [
   {
     path: '',
@@ -38,6 +34,14 @@ const routes: Routes = [
   {
     path: 'displayItem/:response',
     component: DisplayItemComponent,
+  },
+  {
+    path: 'shoppingList',
+    component: ShoppingListComponent,
+  },
+  {
+    path: 'savedList',
+    component: SavedListComponent,
   },
   {
     path: '**',

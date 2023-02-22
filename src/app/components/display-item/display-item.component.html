@@ -9,9 +9,9 @@
             <div class="col mb-2">
               <div class="col mb-2"  style="padding: 30px">
                 <div>
-                  <p>Name: {{food.name}}</p>
-                  <p>Origin: {{food.origin}}</p>
-                  <p>Miles: {{food.miles}}</p>
+                  <p>Name: {{foodInfo.name}}</p>
+                  <p>Origin: {{foodInfo.origin}}</p>
+                  <p>Miles: {{foodInfo.miles}}</p>
                 </div>
               </div>
 <!--              <div class="row">-->
@@ -29,6 +29,14 @@
 <!--                </div>-->
 <!--              </div>-->
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-grid" style ="padding: 30px">
+            <button type="button" (click)="addList()" class="btn btn-sm" style="background-color: #EACBBF">
+              <!--                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
+              Add to list
+            </button>
           </div>
         </div>
       </div>

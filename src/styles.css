@@ -8,11 +8,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
-  background: #ffffff;
+  /*background: url("./assets/5.jpg") no-repeat,#fff;*/
+  /*background-size: cover;*/
 }
 .card {
   /*background: #3D4C32;*/
-  body: #ffffff;
+  body: #fff;
 }
 
 .app-header {
