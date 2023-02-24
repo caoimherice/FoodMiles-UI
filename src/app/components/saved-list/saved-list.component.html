@@ -10,17 +10,48 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">CreatedAt</th>
-<!--                <th scope="col">Origin</th>-->
-<!--                <th scope="col">Miles</th>-->
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of items; let i=index">
+              <tr *ngFor="let item of createdAtList; let i=index" (mouseover)="showDetails(i)" (mouseout)="hideDetails()" [ngClass]="{ 'table-active': i === activeRow }">
                 <th scope="row">{{i+1}}</th>
-                <td>{{ item.createdAt }}</td>
-<!--                <td>{{ item.itemDetails.origin }}</td>-->
-<!--                <td>{{ item.itemDetails.miles }}</td>-->
+                <td>{{ item }}</td>
+                <div>
+                  <app-row-details *ngIf="i === activeRow" [createdAt]="item" [listDetails]="listDetails[i]"></app-row-details>
+                </div>
               </tr>
+              </tbody>
+            </table>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Miles</th>
+              </tr>
+              </thead>
+              <tbody>
+<!--              <tr *ngFor="let detail of item of listDetails; let i=index">-->
+<!--                  <th scope="row">{{i+1}}</th>-->
+<!--                  <td *ngFor="let detail of item">{{ detail.itemDetails.name }}</td>-->
+<!--                  <td *ngFor="let detail of item">{{ detail.itemDetails.origin }}</td>-->
+<!--                  <td *ngFor="let detail of item">{{ detail.itemDetails.miles }}</td>-->
+<!--              </tr>-->
+<!--              <tr *ngFor="let detail of item of listDetails; let i=index">-->
+<!--                <th scope="row">{{i+1}}</th>-->
+<!--                <td>{{ detail.itemDetails.name }}</td>-->
+<!--                <td>{{ detail.itemDetails.origin }}</td>-->
+<!--                <td>{{ detail.itemDetails.miles }}</td>-->
+<!--              </tr>-->
+<!--                  <tr *ngFor="let details of listDetails; let i = index;">-->
+<!--                    <th scope="row">{{ i + 1 }}</th>-->
+<!--                    <ng-container *ngFor="let detail of details">-->
+<!--                      <td>{{ detail.itemDetails.name }}</td>-->
+<!--                      <td>{{ detail.itemDetails.origin }}</td>-->
+<!--                      <td>{{ detail.itemDetails.miles }}</td>-->
+<!--                    </ng-container>-->
+<!--                  </tr>-->
               </tbody>
             </table>
           </div>

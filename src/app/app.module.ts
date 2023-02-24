@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { TooltipDirective } from './tooltip.directive';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -17,6 +18,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { DisplayItemComponent } from './components/display-item/display-item.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { SavedListComponent } from './components/saved-list/saved-list.component';
+import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SavedListComponent } from './components/saved-list/saved-list.component
     SearchItemComponent,
     DisplayItemComponent,
     ShoppingListComponent,
-    SavedListComponent
+    SavedListComponent,
+    TooltipDirective,
+    SavedListRowDetailsComponent
   ],
   imports: [
     BrowserModule,
