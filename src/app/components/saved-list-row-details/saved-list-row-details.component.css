@@ -1,9 +1,10 @@
 .row-details {
-     background-color: #f9f9f9;
+     background-color: #EACBBF;
+  /*background-color: #f9f9f9;*/
      border: 1px solid #ddd;
      padding: 10px;
      position: absolute;
      z-index: 1;
-     width: 300px;
+     width: 400px;
      border-radius: 5px;
    }

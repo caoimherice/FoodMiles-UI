@@ -10,7 +10,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TooltipDirective } from './tooltip.directive';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -32,7 +31,6 @@ import { SavedListRowDetailsComponent } from './components/saved-list-row-detail
     DisplayItemComponent,
     ShoppingListComponent,
     SavedListComponent,
-    TooltipDirective,
     SavedListRowDetailsComponent
   ],
   imports: [

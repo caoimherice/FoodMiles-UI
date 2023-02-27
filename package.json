@@ -24,7 +24,6 @@
     "aws-amplify": "^5.0.10",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "jquery": "^3.6.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -34,7 +33,6 @@
     "@angular/cli": "~15.0.4",
     "@angular/compiler-cli": "^15.0.0",
     "@types/jasmine": "~4.3.0",
-    "@types/jquery": "^3.5.16",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
