@@ -17,6 +17,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { DisplayItemComponent } from './components/display-item/display-item.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { SavedListComponent } from './components/saved-list/saved-list.component';
+import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SavedListComponent } from './components/saved-list/saved-list.component
     SearchItemComponent,
     DisplayItemComponent,
     ShoppingListComponent,
-    SavedListComponent
+    SavedListComponent,
+    SavedListRowDetailsComponent
   ],
   imports: [
     BrowserModule,
