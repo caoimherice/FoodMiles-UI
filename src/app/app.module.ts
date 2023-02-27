@@ -16,6 +16,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { DisplayItemComponent } from './components/display-item/display-item.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { SavedListComponent } from './components/saved-list/saved-list.component';
+import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
 import { MapComponent } from './components/map/map.component';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MapComponent } from './components/map/map.component';
     DisplayItemComponent,
     ShoppingListComponent,
     SavedListComponent,
-    MapComponent
+    MapComponent,
+    SavedListRowDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,8 +7,11 @@ import { CognitoService } from "../../cognito.service";
   templateUrl: './saved-list.component.html',
   styleUrls: ['./saved-list.component.css']
 })
-export class SavedListComponent implements OnInit{
+export class SavedListComponent implements OnInit {
   items: any;
+  createdAtList: any[] = [];
+  listDetails: any[] = [];
+  activeRow: number | null = 0;
   constructor(
     private http: HttpClient,
     private cognitoService: CognitoService,
@@ -28,10 +31,24 @@ export class SavedListComponent implements OnInit{
           .get('https://gjru6axeok.execute-api.us-east-1.amazonaws.com/savedList/list/' + session.getIdToken().payload['cognito:username'], {headers})
           .subscribe((response: Object) => {
             this.items = response as any[];
-            console.log(this.items)
+            for (let item of this.items){
+              this.createdAtList.push(item.createdAt)
+              this.listDetails.push(item.items_list)
+              console.log(this.createdAtList)
+              console.log(this.listDetails)
+            }
             this.changeDetector.detectChanges();
           });
       });
   }
+
+  showDetails(i: number) {
+    this.activeRow = i;
+  }
+
+  hideDetails() {
+    this.activeRow = null;
+  }
+
 }
 
