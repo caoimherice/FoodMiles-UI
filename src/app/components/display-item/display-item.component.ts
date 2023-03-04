@@ -37,8 +37,8 @@ DisplayItemComponent implements OnInit{
       .then(session => {
         var data = {
           'userId': session.getIdToken().payload['cognito:username'],
-          'name': this.food.name,
-          'origin': this.food.origin
+          'name': this.foodInfo.name,
+          'origin': this.foodInfo.origin
         }
         console.log("id token", session.getIdToken().payload['cognito:username'])
         console.log('user id', data.userId)
@@ -47,7 +47,7 @@ DisplayItemComponent implements OnInit{
         this.http
           .post(url, data,{headers})
           .subscribe((response) => {
-            this.router.navigate(['shoppingList']);
+            // this.router.navigate(['shoppingList']);
             console.log(response)
           });
       });
