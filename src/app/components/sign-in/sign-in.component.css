@@ -44,6 +44,11 @@
   font-size: 14px;
 }
 
+.text-signIn-muted {
+  font-size: 14px;
+  color: #c24244;
+}
+
 .container .box {
   width: 100px;
   height: 100px;
