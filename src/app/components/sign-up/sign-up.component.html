@@ -1,78 +1,25 @@
-<!--<div class="row justify-content-center my-5">-->
-<!--  <div class="col-8">-->
-<!--    <div class="card">-->
-<!--      <div class="card-body" *ngIf="!isConfirm">-->
-<!--        <div class="row">-->
-<!--          <div class="col mb-2" style="object-fit: fill">-->
-<!--            <img class="img-fluid" src="https://images.pexels.com/photos/2495651/pexels-photo-2495651.jpeg"/>-->
-<!--          </div>-->
-<!--          <div class="col mb-2">-->
-<!--          <div class="col mb-2" style ="padding: 40px">-->
-<!--            <label for="email" class="form-label">Email:</label>-->
-<!--            <input type="email" id="email1" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">-->
-<!--          </div>-->
-<!--        <div class="row">-->
-<!--          <div class="col mb-2" style ="padding: 40px">-->
-<!--            <label for="password" class="form-label">Password:</label>-->
-<!--            <div class="input-group input-group-sm">-->
-<!--              <input [type]="user.showPassword ? 'text' : 'password'" id="password1" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">-->
-<!--              <button type="button" class="btn btn-outline-secondary" (click)="user.showPassword = !user.showPassword">-->
-<!--                <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--          <div class="col d-grid" style ="padding: 0px">-->
-<!--            <button type="button" (click)="signUp()" class="btn btn-sm btn-success" [disabled]="loading">-->
-<!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
-<!--              Sign up-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      </div>-->
-<!--      </div>-->
-<!--      <div class="card-body" *ngIf="isConfirm">-->
-<!--        <div class="row">-->
-<!--          <div class="col mb-2">-->
-<!--            <label for="code" class="form-label">Code:</label>-->
-<!--            <input type="text" id="code1" name="code" #code="ngModel" [(ngModel)]="user.code" class="form-control form-control-sm">-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--          <div class="col d-grid">-->
-<!--            <button type="button" (click)="confirmSignUp()" class="btn btn-sm btn-success" [disabled]="loading">-->
-<!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
-<!--              Confirm-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="container">
   <div class="body d-md-flex align-items-center justify-content-between">
     <div class="box-1 mt-md-0 mt-5">
-<!--      <img src="https://images.unsplash.com/photo-1473081556163-2a17de81fc97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGRhcmslMjBncmVlbiUyMGxlYXZlc3xlbnwwfHwwfHw%3D&w=1000&q=80"-->
-<!--           class="" alt="">-->
       <img src="assets/greenleaves.jpg" alt="image">
     </div>
     <div class=" box-2 d-flex flex-column h-100" *ngIf="!isConfirm">
       <div class="mt-5">
-        <p class="mb-1 h-1">Create Account.</p>
-        <p class="text-muted mb-2">Share your thoughts with the world form today.</p>
+        <div class="row">
+          <div class="col mb-2" style ="padding-left: 25px">
+            <p class="mb-2 h-1" style="color: #7f4722">Create Account.</p>
+            <p class="text-signUp-muted mb-2">Create account to start tracking your food miles.</p>
+            </div>
+        </div>
         <div class="card-body" *ngIf="!isConfirm">
           <div class="row">
             <div class="col mb-2">
-              <div class="col mb-2" style ="padding: 30px">
+              <div class="col mb-2" style ="padding: 25px">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">
               </div>
               <div class="row">
-                <div class="col mb-2" style ="padding: 30px">
+                <div class="col mb-2" style ="padding: 25px">
                   <label for="password" class="form-label">Password:</label>
                   <div class="input-group input-group-sm">
                     <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">
@@ -83,8 +30,8 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col d-grid" style ="padding: 30px">
-                  <button type="button" (click)="signUp()" class="btn btn-sm" style="background-color: #EACBBF" [disabled]="loading">
+                <div class="col d-grid" style ="padding: 25px">
+                  <button type="button" (click)="signUp()" class="btn btn-sm" style="background-color: #ffede7; color: #7f4722" [disabled]="loading">
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
                     Sign up
                   </button>
@@ -93,16 +40,26 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class=" box-2 d-flex flex-column h-100" *ngIf="isConfirm">
+      <div class="mt-5">
+        <div class="row">
+          <div class="col mb-2" style ="padding-left: 25px">
+            <p class="mb-2 h-1" style="color: #7f4722">Validate Account.</p>
+            <p class="text-signIn-muted mb-2">Please enter code sent to {{user.email}}.</p>
+          </div>
+        </div>
         <div class="card-body" *ngIf="isConfirm">
           <div class="row">
-            <div class="col mb-2">
+            <div class="col mb-2" style ="padding: 25px">
               <label for="code" class="form-label">Code:</label>
               <input type="text" id="code" name="code" #code="ngModel" [(ngModel)]="user.code" class="form-control form-control-sm">
             </div>
           </div>
           <div class="row">
-            <div class="col d-grid">
-              <button type="button" (click)="confirmSignUp()" class="btn btn-sm btn-success" [disabled]="loading">
+            <div class="col d-grid" style ="padding: 25px">
+              <button type="button" (click)="confirmSignUp()" class="btn btn-sm" style="background-color: #ffede7; color: #7f4722" [disabled]="loading">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
                 Confirm
               </button>
@@ -110,6 +67,6 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </div>

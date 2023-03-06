@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject } from 'rxjs';
 import { Amplify, Auth } from 'aws-amplify';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
 
@@ -14,7 +14,7 @@ export interface IUser {
   providedIn: 'root'
 })
 export class CognitoService {
-  private authenticationSubject : BehaviorSubject<any> | undefined;
+  public isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   constructor() {
     Amplify.configure({
       Auth: {
@@ -23,7 +23,7 @@ export class CognitoService {
       }
     });
 
-    this.authenticationSubject = new BehaviorSubject<boolean>(false);
+    this.updateAuthentication();
   }
 
   public signUp(user: IUser): Promise<any> {
@@ -40,7 +40,7 @@ export class CognitoService {
     return Auth.signIn(user.email, user.password)
       .then(() => {
         // @ts-ignore
-        this.authenticationSubject.next(true);
+        this.updateAuthentication();
       });
   }
 
@@ -48,26 +48,15 @@ export class CognitoService {
     return Auth.signOut()
       .then(() => {
         // @ts-ignore
-        this.authenticationSubject.next(false);
+        this.updateAuthentication();
       });
   }
 
-  public isAuthenticated(): Promise<boolean> {
+  public updateAuthentication(): void {
     // @ts-ignore
-    if (this.authenticationSubject.value) {
-      return Promise.resolve(true);
-    } else {
-      return this.getUser()
-        .then((user: any) => {
-          if (user) {
-            return true;
-          } else {
-            return false;
-          }
-        }).catch(() => {
-          return false;
-        });
-    }
+   Auth.currentUserInfo()
+     .then(user => this.isAuthenticated$.next(!!user))
+     .catch(() => this.isAuthenticated$.next(false));
   }
 
   public getUser(): Promise<any> {

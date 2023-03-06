@@ -21,6 +21,7 @@ export class SignUpComponent {
 
   public signUp(): void {
     this.loading = true;
+    console.log("signing up")
     this.cognitoService.signUp(this.user)
       .then(() => {
         this.loading = false;
