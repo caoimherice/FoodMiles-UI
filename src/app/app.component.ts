@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { CognitoService } from './cognito.service';
-import {BehaviorSubject} from "rxjs";
 import {Observable} from "rxjs/";
 @Component({
   selector: 'app-root',
@@ -17,13 +15,6 @@ export class AppComponent {
     private router: Router,
     private cognitoService: CognitoService
   ) { }
-
-  // public ngOnInit(): void {
-  //   this.cognitoService.isAuthenticated()
-  //     .then((success: boolean) => {
-  //       this.isAuthenticated = success;
-  //     });
-  // }
 
   public signOut(): void {
     this.cognitoService.signOut()
