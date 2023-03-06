@@ -42,8 +42,9 @@
   font-weight: 700;
 }
 
-.text-muted {
+.text-signUp-muted {
   font-size: 14px;
+  color: #c24244;
 }
 
 .container .box {
