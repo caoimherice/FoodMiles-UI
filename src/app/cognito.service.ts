@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Amplify, Auth } from 'aws-amplify';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
+import {Observable} from "rxjs/";
 
 export interface IUser {
   email: string;
@@ -52,22 +53,26 @@ export class CognitoService {
       });
   }
 
-  public isAuthenticated(): Promise<boolean> {
+  // public isAuthenticated(): Promise<boolean> {
+  //   // @ts-ignore
+  //   if (this.authenticationSubject.value) {
+  //     return Promise.resolve(true);
+  //   } else {
+  //     return this.getUser()
+  //       .then((user: any) => {
+  //         if (user) {
+  //           return true;
+  //         } else {
+  //           return false;
+  //         }
+  //       }).catch(() => {
+  //         return false;
+  //       });
+  //   }
+  // }
+  public isAuthenticated(): Observable<boolean> {
     // @ts-ignore
-    if (this.authenticationSubject.value) {
-      return Promise.resolve(true);
-    } else {
-      return this.getUser()
-        .then((user: any) => {
-          if (user) {
-            return true;
-          } else {
-            return false;
-          }
-        }).catch(() => {
-          return false;
-        });
-    }
+    return this.authenticationSubject.asObservable();
   }
 
   public getUser(): Promise<any> {

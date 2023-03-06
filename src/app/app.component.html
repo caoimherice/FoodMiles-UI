@@ -1,47 +1,34 @@
-<!--&lt;!&ndash; Toolbar &ndash;&gt;-->
-<!--<mat-toolbar color="primary" class="app-header">-->
-<!--  <div><a href="https://www.positronx.io" target="_blank" class="positronx">PositronX.io</a></div>-->
-<!--  <span class="nav-tool-items">-->
-<!--    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>-->
-<!--    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>-->
-<!--  </span>-->
-<!--</mat-toolbar>-->
-<!--<router-outlet></router-outlet>-->
-<nav class="navbar navbar-expand-sm navbar-light">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-scroll shadow-0" style="background-color: #ffede7;">
+  <div class="container">
     <a class="navbar-brand" href="#">Food Miles</a>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon d-flex justify-content-start align-items-center"><i class="fas fa-bars"></i></span>
     </button>
-
     <div id="navbarContent" class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signUp" routerLinkActive="active" *ngIf="!isAuthenticated">Sign up</a>
+          <a class="nav-link px-3" routerLink="/signUp" routerLinkActive="active" *ngIf="!isAuthenticated">Sign up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signIn" routerLinkActive="active" *ngIf="!isAuthenticated">Sign in</a>
+          <a class="nav-link px-3" routerLink="/signIn" routerLinkActive="active" *ngIf="!isAuthenticated">Sign in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/profile" routerLinkActive="active" *ngIf="isAuthenticated">Profile</a>
+          <a class="nav-link px-3" routerLink="/profile" routerLinkActive="active" *ngIf="isAuthenticated">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">Sign out</a>
+          <a class="nav-link px-3" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">Sign out</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/shoppingList" routerLinkActive="active" *ngIf="isAuthenticated">Shopping List</a>
+          <a class="nav-link px-3" routerLink="/shoppingList" routerLinkActive="active" *ngIf="isAuthenticated">Shopping List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/searchItem" routerLinkActive="active" *ngIf="isAuthenticated">Search Item</a>
+          <a class="nav-link px-3" routerLink="/searchItem" routerLinkActive="active" *ngIf="isAuthenticated">Search Item</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/savedList" routerLinkActive="active" *ngIf="isAuthenticated">Saved Lists</a>
+          <a class="nav-link px-3" routerLink="/savedList" routerLinkActive="active" *ngIf="isAuthenticated">Saved Lists</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
 <router-outlet></router-outlet>
-<!--<app-search></app-search>-->
