@@ -11,7 +11,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Origin</th>
-                    <th scope="col">Miles</th>
+                    <th scope="col">Distance</th>
+                    <th scope="col">Emissions</th>
+                    <th scope="col">Lead Time</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -19,14 +21,18 @@
                     <th scope="row">{{i+1}}</th>
                     <td>{{ item.itemDetails.name }}</td>
                     <td>{{ item.itemDetails.origin }}</td>
-                    <td>{{ item.itemDetails.miles }}</td>
+                    <td>{{ item.itemDetails.distance }}</td>
+                    <td>{{ item.itemDetails.emissions }}</td>
+                    <td>{{ item.itemDetails.lead_time }}</td>
                   </tr>
                 </tbody>
             </table>
             </div>
           </div>
           <div class="row pb-4">
-            <h6>Total food miles: {{totalMiles.total_miles}}</h6>
+            <h6>Total food miles: {{totalDistance.total_distance}}</h6>
+            <h6>Total food miles: {{totalEmissions.total_emissions}}</h6>
+            <h6>Total food miles: {{totalLeadTime.total_lead_time}}</h6>
           </div>
           <div class="row">
             <div class="col d-grid">

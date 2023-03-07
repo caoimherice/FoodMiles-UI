@@ -10,7 +10,9 @@ import { CognitoService } from "../../cognito.service";
 })
 export class ShoppingListComponent implements OnInit{
   items: any;
-  totalMiles: any;
+  totalDistance: any;
+  totalEmissions: any;
+  totalLeadTime: any;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -31,12 +33,10 @@ export class ShoppingListComponent implements OnInit{
         this.http
           .get('https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/details/' + session.getIdToken().payload['cognito:username'], {headers})
           .subscribe((response: any) => {
-            const items= response[0];
-            const totalMiles= response[1];
-            console.log(items);
-            console.log(totalMiles);
-            this.items = items;
-            this.totalMiles = totalMiles;
+            this.items = response[0];
+            this.totalDistance = response[1];
+            this.totalEmissions = response[2];
+            this.totalLeadTime = response[3];
             this.changeDetector.detectChanges();
           });
       });
