@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -23,6 +23,8 @@ export class MapComponent implements OnInit {
   myLines: any[] = [];
   legs = [["Seville", "Terminal Marítima del Guadalquivir (TMG)"],["Terminal Marítima del Guadalquivir (TMG)", "Bilbao Rail Terminal"], ["Bilbao Rail Terminal", "CSP Iberian Bilbao Terminal (ex Noatum)"], ["CSP Iberian Bilbao Terminal (ex Noatum)", "Portroe Terminal"], ["Portroe Terminal", "Galway City"]]
 
+  @Input()
+  foodInfo: any;
   constructor(
     private http: HttpClient,
     private cognitoService: CognitoService,

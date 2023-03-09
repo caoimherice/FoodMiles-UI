@@ -38,8 +38,11 @@
         </div>
       </div>
       <div class="row">
-        <app-display-item [foodInfo]="foodInfo"></app-display-item>
+        <app-display-item [name]="name" [origin]="origin" [totalDistance]="totalDistance" [totalEmissions]="totalEmissions" [totalLeadTime]="totalLeadTime"></app-display-item>
       </div>
+<!--      <div class="row">-->
+<!--        <app-map [foodInfo]="foodInfo"></app-map>-->
+<!--      </div>-->
     </div>
     <div class="col-4">
       <app-shopping-list></app-shopping-list>

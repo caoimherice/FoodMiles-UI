@@ -10,25 +10,31 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   styleUrls: ['./display-item.component.css'],
   // providers: [SearchItemComponent]
 })
-export class
-DisplayItemComponent implements OnInit{
+export class DisplayItemComponent{
   // name: any;
   // origin: any;
   // miles: any;
-  food:any;
 
   @Input()
-  foodInfo: any;
+  totalDistance: any;
+  @Input()
+  totalEmissions: any;
+  @Input()
+  totalLeadTime: any;
+  @Input()
+  name: any;
+  @Input()
+  origin: any;
   constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute, private cognitoService: CognitoService) {
   }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.food = JSON.parse(params['response']);
-      console.log(this.food);
-      // do something with this.userId
-    });
-  }
+  // ngOnInit() {
+  //   this.route.params.subscribe(params => {
+  //     this.food = JSON.parse(params['response']);
+  //     console.log(this.food);
+  //     // do something with this.userId
+  //   });
+  // }
 
   addList() {
     var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/item'
@@ -37,8 +43,8 @@ DisplayItemComponent implements OnInit{
       .then(session => {
         var data = {
           'userId': session.getIdToken().payload['cognito:username'],
-          'name': this.foodInfo.name,
-          'origin': this.foodInfo.origin
+          'name': this.name,
+          'origin': this.origin
         }
         console.log("id token", session.getIdToken().payload['cognito:username'])
         console.log('user id', data.userId)
