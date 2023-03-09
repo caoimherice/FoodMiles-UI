@@ -10,6 +10,9 @@ import { CognitoService } from "../../cognito.service";
 export class SavedListComponent implements OnInit {
   items: any;
   createdAtList: any[] = [];
+  totalDistanceList: any[] = [];
+  totalEmissionsList: any[] = [];
+  totalLeadTimeList: any[] = [];
   listDetails: any[] = [];
   activeRow: number | null = 0;
   constructor(
@@ -33,6 +36,9 @@ export class SavedListComponent implements OnInit {
             this.items = response as any[];
             for (let item of this.items){
               this.createdAtList.push(item.createdAt)
+              this.totalDistanceList.push(item.total_distance)
+              this.totalEmissionsList.push(item.total_emissions)
+              this.totalLeadTimeList.push(item.total_lead_time)
               this.listDetails.push(item.items_list)
               console.log(this.createdAtList)
               console.log(this.listDetails)
