@@ -24,7 +24,8 @@
                   <td>{{ item.itemDetails.distance }}</td>
                   <td>{{ item.itemDetails.emissions }}</td>
                   <td>{{ item.itemDetails.lead_time }}</td>
-                  <td><button type="button" (click)="deleteItem(i)">Delete</button></td>
+                  <td><button class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d" (click)="deleteItem(i)"><i class="bi bi-trash"></i></button></td>
+<!--                  <td><button type="button" (click)="deleteItem(i)">Delete</button></td>-->
                 </tr>
               </tbody>
           </table>
