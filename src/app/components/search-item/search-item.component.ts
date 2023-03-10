@@ -22,6 +22,7 @@ export class SearchItemComponent {
   totalLeadTime: any;
   name: any;
   origin: any;
+  isFormSubmitted = false;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -46,6 +47,7 @@ export class SearchItemComponent {
             this.points = response[4];
             this.name = response[5];
             this.origin = response[6];
+            this.isFormSubmitted = true;
           });
       });
   }

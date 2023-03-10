@@ -11,9 +11,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   // providers: [SearchItemComponent]
 })
 export class DisplayItemComponent{
-  // name: any;
-  // origin: any;
-  // miles: any;
 
   @Input()
   totalDistance: any;
@@ -41,10 +38,13 @@ export class DisplayItemComponent{
     // let headers;
     this.cognitoService.getSession()
       .then(session => {
+        console.log("logging")
+        console.log(this.name.name)
+        console.log(this.origin.origin)
         var data = {
           'userId': session.getIdToken().payload['cognito:username'],
-          'name': this.name,
-          'origin': this.origin
+          'name': this.name.name,
+          'origin': this.origin.origin
         }
         console.log("id token", session.getIdToken().payload['cognito:username'])
         console.log('user id', data.userId)
