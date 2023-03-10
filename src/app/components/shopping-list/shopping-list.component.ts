@@ -41,6 +41,26 @@ export class ShoppingListComponent implements OnInit{
           });
       });
   }
+
+  deleteItem(index: number) {
+    const item = this.items[index];
+    const name = item.itemDetails.name;
+    const origin = item.itemDetails.origin;
+    var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/delete'
+    this.cognitoService.getSession()
+      .then(session => {
+        const options = {
+          headers: new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken()),
+          body: { 'userId': session.getIdToken().payload['cognito:username'], 'name': name, 'origin': origin }
+        };
+        this.http
+          .delete(url, options)
+          .subscribe(() => {
+            this.getList();
+          });
+      });
+  }
+
   saveList() {
     console.log("saving list")
     var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/savedList/list'
