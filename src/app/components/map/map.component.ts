@@ -32,14 +32,15 @@ export class MapComponent implements OnInit {
 
   getMap() {
     // this.map = L.map('map').setView([13.70482, 100.57248], 10);
-    const firstPointString = this.points.points[0];
-    const lastPointString = this.points.points[this.points.points.length - 1];
+    console.log("points", this.routeInfo)
+    const firstPointString = this.routeInfo[0].origin_lat_lng;
+    const lastPointString = this.routeInfo[this.routeInfo.length - 1].destination_lat_lng;
     const [firstLat, firstLng] = firstPointString.split(',');
     const [lastLat, lastLng] = lastPointString.split(',');
     const southWest = L.latLng(parseFloat(firstLat), parseFloat(firstLng));
     const northEast = L.latLng(parseFloat(lastLat), parseFloat(lastLng));
     const bounds = L.latLngBounds(southWest, northEast);
-    this.map = L.map('map').fitBounds(bounds, {padding: [100, 100]});
+    this.map = L.map('map').fitBounds(bounds, {padding: [2000, 2000]});
     // this.map.fitBounds(bounds);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
