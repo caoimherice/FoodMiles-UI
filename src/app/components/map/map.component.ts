@@ -52,14 +52,26 @@ export class MapComponent implements OnInit {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
 
-    console.log("points")
-    console.log(this.points.points)
-    const smallIcon = L.Icon.Default.extend({ iconSize: [10, 10] });
+
+    // const boatIcon = L.icon({
+    //   iconUrl: "../../assets/boat-icon.png",
+    //   iconSize: [32, 32], // Size of the icon image
+    // });
+    //
+    // const boatMarker = L.marker([35.8617, 104.1954], {
+    //   icon: boatIcon,
+    // }).addTo(this.map);
+    //
+    // const smallIcon = L.Icon.Default.extend({ iconSize: [10, 10] });
+    // const pointIcon = L.icon({
+    //   iconUrl: "../../assets/marker-icon.png",
+    //   iconSize: [25, 41], // Size of the icon image
+    // });
     this.points.points.forEach((pointString: string) => {
       const [lat, lng] = pointString.split(',');
       const point = L.latLng(parseFloat(lat), parseFloat(lng));
       // @ts-ignore
-      L.marker(point, { icon: new smallIcon() }).addTo(this.map);
+      L.marker(point).addTo(this.map);
     });
 
     // L.geoJSON(geojsonFeature, {
