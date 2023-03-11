@@ -1,10 +1,8 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CognitoService } from "../../cognito.service";
-import {StyleFunction} from "leaflet";
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -23,25 +21,32 @@ export class MapComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private cognitoService: CognitoService,
-    // private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.getMap();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // detect changes and reload the map
+    this.changeDetector.detectChanges();
+    this.getMap();
+  }
+
   getMap() {
-    // this.map = L.map('map').setView([13.70482, 100.57248], 10);
-    console.log("points", this.routeInfo)
-    const firstPointString = this.routeInfo[0].origin_lat_lng;
-    const lastPointString = this.routeInfo[this.routeInfo.length - 1].destination_lat_lng;
+    if (this.map) {
+      this.map.remove();
+    }
+
+    const firstPointString = this.points.points[0];
+    const lastPointString = this.points.points[this.points.points.length - 1];
     const [firstLat, firstLng] = firstPointString.split(',');
     const [lastLat, lastLng] = lastPointString.split(',');
     const southWest = L.latLng(parseFloat(firstLat), parseFloat(firstLng));
     const northEast = L.latLng(parseFloat(lastLat), parseFloat(lastLng));
     const bounds = L.latLngBounds(southWest, northEast);
-    this.map = L.map('map').fitBounds(bounds, {padding: [2000, 2000]});
-    // this.map.fitBounds(bounds);
+    this.map = L.map('map').fitBounds(bounds, {padding: [100, 100]});
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
