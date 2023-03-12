@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import 'leaflet-routing-machine';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CognitoService } from "../../cognito.service";
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',

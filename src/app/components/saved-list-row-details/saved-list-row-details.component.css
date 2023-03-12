@@ -1,10 +1,14 @@
 .row-details {
-     background-color: #EACBBF;
+  background-color: #CFE6D0;
   /*background-color: #f9f9f9;*/
-     border: 1px solid #ddd;
-     padding: 10px;
-     position: absolute;
-     z-index: 1;
-     width: 400px;
-     border-radius: 5px;
-   }
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: absolute;
+  top: 0%; /* adjust as needed */
+  left: calc(100% + 10px);
+  z-index: 1;
+  width: 500px;
+  border-radius: 5px;
+}
+/*style="background-color: #CFE6D0; color: #07391d"*/
+

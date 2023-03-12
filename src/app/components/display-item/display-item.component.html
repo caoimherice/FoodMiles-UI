@@ -1,47 +1,40 @@
-<div class="container">
-  <div class="body d-md-flex align-items-center justify-content-between">
-    <div class=" box-2 d-flex flex-column h-100">
-      <div class="mt-5">
-        <p class="mb-1 h-1">Food miles</p>
-        <p class="text-muted mb-2">Calculated food miles for your search</p>
-        <div class="card-body">
-          <div class="row">
-            <div class="col mb-2">
-              <div class="col mb-2"  style="padding: 30px">
-                <div>
-                  <p>Name: {{name.name}}</p>
-                  <p>Origin: {{origin.origin}}</p>
-                  <p>Distance: {{totalDistance.total_distance}}</p>
-                  <p>Emissions: {{totalEmissions.total_emissions}}</p>
-                  <p>Lead Time: {{totalLeadTime.total_lead_time}}</p>
-                </div>
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title" style="color: #07391d">{{name.name}}</h4>
+            <p class="text-muted mb-2">Calculated food miles for your search</p><p></p>
+            <div class="row">
+              <div class="col-6">
+                  <div class="col">
+                    <p>Name:</p>
+                    <p>Origin:</p>
+                    <p>Distance:</p>
+                    <p>Emissions:</p>
+                    <p>Lead Time:</p>
+                  </div>
               </div>
-<!--              <div class="row">-->
-<!--                <div class="col mb-2" style ="padding: 30px">-->
-<!--                  <label for="origin" class="form-label">Origin:</label>-->
-<!--                  <input type="origin" id="origin" name="origin" #origin="ngModel" [(ngModel)]="food.origin" class="form-control form-control-sm">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="row">-->
-<!--                <div class="col d-grid" style ="padding: 30px">-->
-<!--                  <button type="button" (click)="searchItem()" class="btn btn-sm" style="background-color: #EACBBF">-->
-<!--                    &lt;!&ndash;                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>&ndash;&gt;-->
-<!--                    Search Item-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
+              <div class="col-6">
+                  <div class="col">
+                    <p>{{name.name}}</p>
+                    <p>{{origin.origin}}</p>
+                    <p>{{totalDistance.total_distance}}   km</p>
+                    <p>{{totalEmissions.total_emissions}}</p>
+                    <p>{{totalLeadTime.total_lead_time}}</p>
+                  </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col d-grid" style ="padding: 30px">
-            <button type="button" (click)="addList()" class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d">
-              <!--                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
-              Add to list
-            </button>
+            <div class="row">
+              <div class="col d-grid" style="padding: 30px">
+                <button type="button" (click)="addList()" class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d">Add to list</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
