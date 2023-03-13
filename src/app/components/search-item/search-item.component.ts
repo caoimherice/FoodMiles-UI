@@ -15,7 +15,14 @@ export class SearchItemComponent {
     origin: new FormControl(''),
   });
 
-  foodInfo: any;
+  routeInfo: any;
+  totalDistance: any;
+  totalEmissions: any;
+  points: any;
+  totalLeadTime: any;
+  name: any;
+  origin: any;
+  isFormSubmitted = false;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -23,16 +30,24 @@ export class SearchItemComponent {
   ) {}
 
   onSubmit() {
-    const url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/food/item/' + this.searchItemForm.get('name')?.value + '/'+this.searchItemForm.get('origin')?.value;
-
+    const url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/route/' + this.searchItemForm.get('name')?.value + '/'+this.searchItemForm.get('origin')?.value;
     this.cognitoService.getSession()
       .then(session => {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken());
         this.http
           .get(url, {headers})
-          .subscribe(response => {
+          .subscribe((response: any) => {
             // this.router.navigate(['displayItem',JSON.stringify(response)]);
-            this.foodInfo = response;
+            console.log("food info")
+            console.log(response)
+            this.routeInfo = response[0];
+            this.totalDistance = response[1];
+            this.totalEmissions = response[2];
+            this.totalLeadTime = response[3];
+            this.points = response[4];
+            this.name = response[5];
+            this.origin = response[6];
+            this.isFormSubmitted = true;
           });
       });
   }

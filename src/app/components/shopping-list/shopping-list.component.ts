@@ -10,7 +10,9 @@ import { CognitoService } from "../../cognito.service";
 })
 export class ShoppingListComponent implements OnInit{
   items: any;
-  totalMiles: any;
+  totalDistance: any;
+  totalEmissions: any;
+  totalLeadTime: any;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -31,17 +33,36 @@ export class ShoppingListComponent implements OnInit{
         this.http
           .get('https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/details/' + session.getIdToken().payload['cognito:username'], {headers})
           .subscribe((response: any) => {
-            const items= response[0];
-            const totalMiles= response[1];
-            console.log(items);
-            console.log(totalMiles);
-            this.items = items;
-            this.totalMiles = totalMiles;
+            this.items = response[0];
+            this.totalDistance = response[1];
+            this.totalEmissions = response[2];
+            this.totalLeadTime = response[3];
             this.changeDetector.detectChanges();
           });
       });
   }
+
+  deleteItem(index: number) {
+    const item = this.items[index];
+    const name = item.itemDetails.name;
+    const origin = item.itemDetails.origin;
+    var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/delete'
+    this.cognitoService.getSession()
+      .then(session => {
+        const options = {
+          headers: new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken()),
+          body: { 'userId': session.getIdToken().payload['cognito:username'], 'name': name, 'origin': origin }
+        };
+        this.http
+          .delete(url, options)
+          .subscribe(() => {
+            this.getList();
+          });
+      });
+  }
+
   saveList() {
+    console.log("saving list")
     var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/savedList/list'
     // let headers;
     this.cognitoService.getSession()
@@ -50,13 +71,15 @@ export class ShoppingListComponent implements OnInit{
           'userId': session.getIdToken().payload['cognito:username'],
           'items': this.items
         }
+        console.log(this.items)
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken());
         console.log(headers)
         this.http
           .post(url, data,{headers})
           .subscribe((response) => {
-            // this.router.navigate(['shoppingList']);
             console.log(response)
+            this.getList()
+            this.router.navigate(['savedList']);
           });
       });
   }

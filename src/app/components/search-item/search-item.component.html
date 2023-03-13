@@ -1,12 +1,12 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col-8">
+    <div class="col-12">
       <div class="row d-flex align-items-center justify-content-center">
         <div class="col">
           <div class="card">
             <div class="card-body p-4">
-              <h3 class="card-title">Search item</h3>
-              <h6 class="card-subtitle text-muted pb-4">Search food item to view its food miles</h6>
+              <h4 class="card-title" style="color: #07391d">Search item</h4>
+<!--              <h6 class="card-subtitle text-muted pb-4">Search food item to view its food miles</h6>-->
 
               <form class="row form-horizontal" [formGroup]="searchItemForm" (ngSubmit)="onSubmit()">
                 <div class="col">
@@ -38,11 +38,21 @@
         </div>
       </div>
       <div class="row">
-        <app-display-item [foodInfo]="foodInfo"></app-display-item>
+        <div class="col-4"  *ngIf="isFormSubmitted">
+          <app-display-item [name]="name" [origin]="origin" [totalDistance]="totalDistance" [totalEmissions]="totalEmissions" [totalLeadTime]="totalLeadTime"></app-display-item>
+        </div>
+        <div class="col-8" *ngIf="isFormSubmitted">
+          <app-map [routeInfo]="routeInfo" [points]="points"></app-map>
+        </div>
+      </div>
+      <div class="row" *ngIf="isFormSubmitted">
+        <div class="col-12" *ngIf="isFormSubmitted">
+          <app-route-details [routeInfo]="routeInfo"></app-route-details>
+        </div>
       </div>
     </div>
-    <div class="col-4">
-      <app-shopping-list></app-shopping-list>
-    </div>
+<!--    <div class="col-4">-->
+<!--      <app-shopping-list></app-shopping-list>-->
+<!--    </div>-->
   </div>
 </div>

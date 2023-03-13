@@ -10,35 +10,41 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   styleUrls: ['./display-item.component.css'],
   // providers: [SearchItemComponent]
 })
-export class
-DisplayItemComponent implements OnInit{
-  // name: any;
-  // origin: any;
-  // miles: any;
-  food:any;
+export class DisplayItemComponent{
 
   @Input()
-  foodInfo: any;
+  totalDistance: any;
+  @Input()
+  totalEmissions: any;
+  @Input()
+  totalLeadTime: any;
+  @Input()
+  name: any;
+  @Input()
+  origin: any;
   constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute, private cognitoService: CognitoService) {
   }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.food = JSON.parse(params['response']);
-      console.log(this.food);
-      // do something with this.userId
-    });
-  }
+  // ngOnInit() {
+  //   this.route.params.subscribe(params => {
+  //     this.food = JSON.parse(params['response']);
+  //     console.log(this.food);
+  //     // do something with this.userId
+  //   });
+  // }
 
   addList() {
     var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/item'
     // let headers;
     this.cognitoService.getSession()
       .then(session => {
+        console.log("logging")
+        console.log(this.name.name)
+        console.log(this.origin.origin)
         var data = {
           'userId': session.getIdToken().payload['cognito:username'],
-          'name': this.food.name,
-          'origin': this.food.origin
+          'name': this.name.name,
+          'origin': this.origin.origin
         }
         console.log("id token", session.getIdToken().payload['cognito:username'])
         console.log('user id', data.userId)
@@ -47,8 +53,9 @@ DisplayItemComponent implements OnInit{
         this.http
           .post(url, data,{headers})
           .subscribe((response) => {
-            this.router.navigate(['shoppingList']);
+            // this.router.navigate(['shoppingList']);
             console.log(response)
+            this.router.navigate(['shoppingList']);
           });
       });
   }

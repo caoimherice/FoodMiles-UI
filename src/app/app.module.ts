@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AngularMaterialModule } from './angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +17,8 @@ import { DisplayItemComponent } from './components/display-item/display-item.com
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { SavedListComponent } from './components/saved-list/saved-list.component';
 import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
+import { MapComponent } from './components/map/map.component';
+import { RouteDetailsComponent } from './components/route-details/route-details.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,14 @@ import { SavedListRowDetailsComponent } from './components/saved-list-row-detail
     DisplayItemComponent,
     ShoppingListComponent,
     SavedListComponent,
-    SavedListRowDetailsComponent
+    MapComponent,
+    SavedListRowDetailsComponent,
+    RouteDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule

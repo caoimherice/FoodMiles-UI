@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CognitoService } from './cognito.service';
+import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 import {Observable} from "rxjs/";
 @Component({
   selector: 'app-root',
