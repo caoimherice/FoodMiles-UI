@@ -55,6 +55,7 @@ export class DisplayItemComponent{
           .subscribe((response) => {
             // this.router.navigate(['shoppingList']);
             console.log(response)
+            this.router.navigate(['shoppingList']);
           });
       });
   }

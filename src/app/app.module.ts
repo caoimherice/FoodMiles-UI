@@ -18,6 +18,7 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { SavedListComponent } from './components/saved-list/saved-list.component';
 import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
 import { MapComponent } from './components/map/map.component';
+import { RouteDetailsComponent } from './components/route-details/route-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MapComponent } from './components/map/map.component';
     ShoppingListComponent,
     SavedListComponent,
     MapComponent,
-    SavedListRowDetailsComponent
+    SavedListRowDetailsComponent,
+    RouteDetailsComponent
   ],
   imports: [
     BrowserModule,

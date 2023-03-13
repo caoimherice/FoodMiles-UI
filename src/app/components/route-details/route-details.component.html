@@ -1,0 +1,41 @@
+<div class="container-fluid pt-5 pb-5">
+  <div class="row">
+    <div class="col">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Leg #</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Distance</th>
+                    <th scope="col">Emissions</th>
+                    <th scope="col">Lead Time</th>
+                    <th scope="col">Transport Mode</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let route of routeInfo; let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{ route.origin }}</td>
+                    <td>{{ route.destination }}</td>
+                    <td>{{ route.distance }}</td>
+                    <td>{{ route.emissions }}</td>
+                    <td>{{ route.lead_time }}</td>
+                    <td>{{ route.transport_mode }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

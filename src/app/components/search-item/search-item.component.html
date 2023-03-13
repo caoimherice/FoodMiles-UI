@@ -38,12 +38,17 @@
         </div>
       </div>
       <div class="row">
-      <div class="col-4"  *ngIf="isFormSubmitted">
-        <app-display-item [name]="name" [origin]="origin" [totalDistance]="totalDistance" [totalEmissions]="totalEmissions" [totalLeadTime]="totalLeadTime"></app-display-item>
+        <div class="col-4"  *ngIf="isFormSubmitted">
+          <app-display-item [name]="name" [origin]="origin" [totalDistance]="totalDistance" [totalEmissions]="totalEmissions" [totalLeadTime]="totalLeadTime"></app-display-item>
+        </div>
+        <div class="col-8" *ngIf="isFormSubmitted">
+          <app-map [routeInfo]="routeInfo" [points]="points"></app-map>
+        </div>
       </div>
-      <div class="col-8" *ngIf="isFormSubmitted">
-        <app-map [routeInfo]="routeInfo" [points]="points"></app-map>
-      </div>
+      <div class="row" *ngIf="isFormSubmitted">
+        <div class="col-12" *ngIf="isFormSubmitted">
+          <app-route-details [routeInfo]="routeInfo"></app-route-details>
+        </div>
       </div>
     </div>
 <!--    <div class="col-4">-->

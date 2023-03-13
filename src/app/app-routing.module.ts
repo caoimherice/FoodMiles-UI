@@ -45,10 +45,6 @@ const routes: Routes = [
     component: SavedListComponent,
   },
   {
-    path: 'map',
-    component: MapComponent,
-  },
-  {
     path: '**',
     redirectTo: 'signIn',
   },

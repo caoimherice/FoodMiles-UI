@@ -77,8 +77,9 @@ export class ShoppingListComponent implements OnInit{
         this.http
           .post(url, data,{headers})
           .subscribe((response) => {
-            // this.router.navigate(['shoppingList']);
             console.log(response)
+            this.getList()
+            this.router.navigate(['savedList']);
           });
       });
   }
