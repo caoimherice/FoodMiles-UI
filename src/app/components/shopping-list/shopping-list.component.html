@@ -11,9 +11,9 @@
                   <th scope="col" style="color: #07391d">#</th>
                   <th scope="col" style="color: #07391d">Name</th>
                   <th scope="col" style="color: #07391d">Origin</th>
-                  <th scope="col" style="color: #07391d">Distance</th>
-                  <th scope="col" style="color: #07391d">Emissions</th>
-                  <th scope="col" style="color: #07391d">Lead Time</th>
+                  <th scope="col" style="color: #07391d">Distance (km)</th>
+                  <th scope="col" style="color: #07391d">Emissions (kg CO2)</th>
+                  <th scope="col" style="color: #07391d">Lead Time (mins)</th>
                 </tr>
               </thead>
               <tbody>
@@ -25,16 +25,15 @@
                   <td>{{ item.itemDetails.emissions }}</td>
                   <td>{{ item.itemDetails.lead_time }}</td>
                   <td><button class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d" (click)="deleteItem(i)"><i class="bi bi-trash"></i></button></td>
-<!--                  <td><button type="button" (click)="deleteItem(i)">Delete</button></td>-->
                 </tr>
               </tbody>
           </table>
           </div>
         </div>
         <div class="row pb-4">
-          <h6>Total food miles: {{ totalDistance.total_distance }}</h6>
-          <h6>Total food miles: {{ totalEmissions.total_emissions }}</h6>
-          <h6>Total food miles: {{ totalLeadTime.total_lead_time }}</h6>
+          <h6>Total food miles: {{ totalDistance.total_distance }} km</h6>
+          <h6>Total food miles: {{ totalEmissions.total_emissions }} kg CO2</h6>
+          <h6>Total food miles: {{ totalLeadTime.total_lead_time }} mins</h6>
         </div>
         <div class="row">
           <div class="col d-grid">
