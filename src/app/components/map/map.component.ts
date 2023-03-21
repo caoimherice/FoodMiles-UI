@@ -101,7 +101,7 @@ export class MapComponent implements OnInit {
     //     lineCap: 'round'
     //   }
     // }).addTo(this.map);
-
+    this.myLines = []
     for(let route of this.routeInfo) {
       console.log("transportmode")
       console.log(route.transport_mode)
