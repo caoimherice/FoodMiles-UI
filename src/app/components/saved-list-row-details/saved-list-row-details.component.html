@@ -14,7 +14,7 @@
               <th scope="col" style="color: #07391d">Origin</th>
               <th scope="col" style="color: #07391d">Distance (km)</th>
               <th scope="col" style="color: #07391d">Emissions (kg CO2)</th>
-              <th scope="col" style="color: #07391d">Lead Time (mins)</th>
+              <th scope="col" style="color: #07391d">Lead Time</th>
             </tr>
             </thead>
             <tbody>
@@ -22,9 +22,9 @@
               <th scope="row" style="color: #07391d">{{i+1}}</th>
               <td>{{ item.name }}</td>
               <td>{{ item.origin }}</td>
-              <td>{{ item.distance }}</td>
+              <td>{{ (item.distance / 1000) | number: '1.2-2' }}</td>
               <td>{{ item.emissions }}</td>
-              <td>{{ item.lead_time }}</td>
+              <td>{{ item.lead_time | dayHourMinute }}</td>
             </tr>
             </tbody>
           </table>

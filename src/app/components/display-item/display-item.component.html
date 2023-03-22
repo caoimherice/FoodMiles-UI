@@ -20,9 +20,9 @@
                   <div class="col">
                     <p>{{name.name}}</p>
                     <p>{{origin.origin}}</p>
-                    <p>{{ (totalDistance.total_distance / 100) | number: '1.2-2' }} km</p>
+                    <p>{{ (totalDistance.total_distance / 1000) | number: '1.2-2' }} km</p>
                     <p>{{totalEmissions.total_emissions}} kg CO2</p>
-                    <p>{{totalLeadTime.total_lead_time}} mins</p>
+                    <p>{{ totalLeadTime.total_lead_time | dayHourMinute }}</p>
                   </div>
               </div>
             </div>

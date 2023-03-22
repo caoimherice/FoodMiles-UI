@@ -23,7 +23,7 @@
                     <th scope="row">{{i+1}}</th>
                     <td>{{ route.origin }}</td>
                     <td>{{ route.destination }}</td>
-                    <td>{{ route.distance }}</td>
+                    <td>{{ (route.distance / 1000) | number: '1.2-2' }}</td>
                     <td>{{ route.emissions }}</td>
                     <td>{{ route.lead_time }}</td>
                     <td>{{ route.transport_mode }}</td>

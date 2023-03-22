@@ -1,4 +1,4 @@
-<div style="width: 60%; float: left;">
+<div style="width: 55%; float: left;">
 <div class= "container p-5">
   <div class="col"></div>
   <div class="col">
@@ -13,16 +13,16 @@
                 <th scope="col" style="color: #07391d">Created At</th>
                 <th scope="col" style="color: #07391d">Total Distance (km)</th>
                 <th scope="col" style="color: #07391d">Total Emissions (kg CO2)</th>
-                <th scope="col" style="color: #07391d">Total Lead Time (mins)</th>
+                <th scope="col" style="color: #07391d">Total Lead Time</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let item of createdAtList; let i=index" (mouseover)="showDetails(i)" (mouseout)="hideDetails()" [ngClass]="{ 'table-active': i === activeRow }">
                 <th scope="row" style="color: #07391d">{{i+1}}</th>
                 <td>{{ item }}</td>
-                <td>{{ totalDistanceList[i] }}</td>
+                <td>{{ (totalDistanceList[i] / 1000) | number: '1.2-2' }}</td>
                 <td>{{ totalEmissionsList[i] }}</td>
-                <td>{{ totalLeadTimeList[i] }}</td>
+                <td>{{ totalLeadTimeList[i] | dayHourMinute}}</td>
                 <div>
                   <app-row-details *ngIf="i === activeRow" [createdAt]="item" [listDetails]="listDetails[i]"></app-row-details>
                 </div>

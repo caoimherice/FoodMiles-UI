@@ -19,6 +19,7 @@ import { SavedListComponent } from './components/saved-list/saved-list.component
 import { SavedListRowDetailsComponent } from './components/saved-list-row-details/saved-list-row-details.component';
 import { MapComponent } from './components/map/map.component';
 import { RouteDetailsComponent } from './components/route-details/route-details.component';
+import { DayHourMinutePipe } from './day-hour-minute.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RouteDetailsComponent } from './components/route-details/route-details.
     SavedListComponent,
     MapComponent,
     SavedListRowDetailsComponent,
-    RouteDetailsComponent
+    RouteDetailsComponent,
+    DayHourMinutePipe
   ],
   imports: [
     BrowserModule,
