@@ -12,9 +12,9 @@
                     <th scope="col">Leg #</th>
                     <th scope="col">Origin</th>
                     <th scope="col">Destination</th>
-                    <th scope="col">Distance</th>
-                    <th scope="col">Emissions</th>
-                    <th scope="col">Lead Time</th>
+                    <th scope="col">Distance (km)</th>
+                    <th scope="col">Emissions (kg CO2)</th>
+                    <th scope="col">Lead Time (mins)</th>
                     <th scope="col">Transport Mode</th>
                   </tr>
                   </thead>
@@ -23,7 +23,7 @@
                     <th scope="row">{{i+1}}</th>
                     <td>{{ route.origin }}</td>
                     <td>{{ route.destination }}</td>
-                    <td>{{ route.distance }}</td>
+                    <td>{{ (route.distance / 1000) | number: '1.2-2' }}</td>
                     <td>{{ route.emissions }}</td>
                     <td>{{ route.lead_time }}</td>
                     <td>{{ route.transport_mode }}</td>

@@ -1,8 +1,24 @@
 import {ChangeDetectorRef, Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import * as L from 'leaflet';
+import { icon, Marker } from 'leaflet';
 import 'leaflet-routing-machine';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { CognitoService } from "../../cognito.service";
+
+const iconRetinaUrl = 'assets/marker-icon-2x.png';
+const iconUrl = 'assets/marker-icon.png';
+const shadowUrl = 'assets/marker-shadow.png';
+const iconDefault = icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+Marker.prototype.options.icon = iconDefault;
 
 @Component({
   selector: 'app-map',
@@ -26,6 +42,8 @@ export class MapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    L.Icon.Default.imagePath = "assets/leaflet/";
+
     this.getMap();
   }
 
@@ -83,7 +101,7 @@ export class MapComponent implements OnInit {
     //     lineCap: 'round'
     //   }
     // }).addTo(this.map);
-
+    this.myLines = []
     for(let route of this.routeInfo) {
       console.log("transportmode")
       console.log(route.transport_mode)

@@ -21,20 +21,19 @@
                   <th scope="row" style="color: #07391d">{{i+1}}</th>
                   <td>{{ item.itemDetails.name }}</td>
                   <td>{{ item.itemDetails.origin }}</td>
-                  <td>{{ item.itemDetails.distance }}</td>
-                  <td>{{ item.itemDetails.emissions }}</td>
-                  <td>{{ item.itemDetails.lead_time }}</td>
+                  <td>{{ (item.itemDetails.distance / 1000) | number: '1.2-2' }} km</td>
+                  <td>{{ item.itemDetails.emissions }} kg CO2</td>
+                  <td>{{ item.itemDetails.lead_time | dayHourMinute }}</td>
                   <td><button class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d" (click)="deleteItem(i)"><i class="bi bi-trash"></i></button></td>
-<!--                  <td><button type="button" (click)="deleteItem(i)">Delete</button></td>-->
                 </tr>
               </tbody>
           </table>
           </div>
         </div>
         <div class="row pb-4">
-          <h6>Total food miles: {{ totalDistance.total_distance }}</h6>
-          <h6>Total food miles: {{ totalEmissions.total_emissions }}</h6>
-          <h6>Total food miles: {{ totalLeadTime.total_lead_time }}</h6>
+          <h6>Total food miles: {{ (totalDistance.total_distance / 1000) | number: '1.2-2' }} km</h6>
+          <h6>Total food miles: {{ totalEmissions.total_emissions }} kg CO2</h6>
+          <h6>Total food miles: {{ totalLeadTime.total_lead_time | dayHourMinute}}</h6>
         </div>
         <div class="row">
           <div class="col d-grid">
