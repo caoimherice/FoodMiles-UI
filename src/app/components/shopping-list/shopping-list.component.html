@@ -31,14 +31,22 @@
           </div>
         </div>
         <div class="row pb-4">
-          <h6>Total food miles: {{ (totalDistance.total_distance / 1000) | number: '1.2-2' }} km</h6>
-          <h6>Total food miles: {{ totalEmissions.total_emissions }} kg CO2</h6>
-          <h6>Total food miles: {{ totalLeadTime.total_lead_time | dayHourMinute}}</h6>
+          <div class="d-flex align-items-center">
+            <p style="color: #c24244; font-size: 1.1em">Total distance:</p>
+            <p style="padding-left: 10px">{{ (totalDistance.total_distance / 1000) | number: '1.2-2' }} km</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <p style="color: #c24244; font-size: 1.1em">Total emissions:</p>
+            <p style="padding-left: 10px">{{ totalEmissions.total_emissions }} kg CO2</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <p style="color: #c24244; font-size: 1.1em">Total lead time:</p>
+            <p style="padding-left: 10px">{{ totalLeadTime.total_lead_time | dayHourMinute}}</p>
+          </div>
         </div>
         <div class="row">
           <div class="col d-grid">
             <button type="button" (click)="saveList()" class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d">
-                <!-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>-->
               Save List
             </button>
           </div>
