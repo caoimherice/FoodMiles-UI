@@ -9,6 +9,9 @@ import {SearchItemComponent} from "./components/search-item/search-item.componen
 import {DisplayItemComponent} from "./components/display-item/display-item.component";
 import {ShoppingListComponent} from "./components/shopping-list/shopping-list.component";
 import {SavedListComponent} from "./components/saved-list/saved-list.component";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
+
 import {MapComponent} from "./components/map/map.component";
 const routes: Routes = [
   {
@@ -23,6 +26,14 @@ const routes: Routes = [
   {
     path: 'signIn',
     component: SignInComponent,
+  },
+  {
+    path: 'forgotPassword',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'confirmResetPassword',
+    component: ConfirmResetPasswordComponent,
   },
   {
     path: 'signUp',
