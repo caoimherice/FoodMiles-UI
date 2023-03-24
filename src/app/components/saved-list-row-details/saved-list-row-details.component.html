@@ -1,37 +1,38 @@
 <div class="row-details">
   <div class="row">
     <div class="col">
-  <p>Created At: {{ createdAt }}</p>
-  <div class="card">
-    <div class="card-body p-4">
-      <div class="row pb-4">
-        <div class="col">
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th scope="col" style="color: #07391d">#</th>
-              <th scope="col" style="color: #07391d">Name</th>
-              <th scope="col" style="color: #07391d">Origin</th>
-              <th scope="col" style="color: #07391d">Distance (km)</th>
-              <th scope="col" style="color: #07391d">Emissions (kg CO2)</th>
-              <th scope="col" style="color: #07391d">Lead Time</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of listDetails; let i=index">
-              <th scope="row" style="color: #07391d">{{i+1}}</th>
-              <td>{{ item.name }}</td>
-              <td>{{ item.origin }}</td>
-              <td>{{ (item.distance / 1000) | number: '1.2-2' }}</td>
-              <td>{{ item.emissions }}</td>
-              <td>{{ item.lead_time | dayHourMinute }}</td>
-            </tr>
-            </tbody>
-          </table>
+      <p>Created At: {{ createdAt }}</p>
+      <div class="card">
+        <div class="card-body p-4">
+          <div class="row pb-4">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th scope="col" style="color: #07391d">#</th>
+                  <th scope="col" style="color: #07391d">Name</th>
+                  <th scope="col" style="color: #07391d">Origin</th>
+                  <th scope="col" style="color: #07391d">Distance (km)</th>
+                  <th scope="col" style="color: #07391d">Emissions (kg CO2)</th>
+                  <th scope="col" style="color: #07391d">Lead Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of listDetails; let i=index">
+                  <th scope="row" style="color: #07391d">{{i+1}}</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.origin }}</td>
+                  <td>{{ (item.distance / 1000) | number: '1.2-2' }}</td>
+                  <td>{{ item.emissions }}</td>
+                  <td>{{ item.lead_time | dayHourMinute }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
 </div>
+

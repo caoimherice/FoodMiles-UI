@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Amplify, Auth } from 'aws-amplify';
 import { CognitoUserSession } from 'amazon-cognito-identity-js'
 
@@ -22,7 +22,6 @@ export class CognitoService {
         userPoolWebClientId: '2t074nmv3q25uhg2cnq1rd602q',
       }
     });
-
     this.updateAuthentication();
   }
 
@@ -32,6 +31,7 @@ export class CognitoService {
       password: user.password,
     });
   }
+
   public confirmSignUp(user: IUser): Promise<any> {
     return Auth.confirmSignUp(user.email, user.code);
   }

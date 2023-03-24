@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CognitoService } from "../../cognito.service";
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.css']
 })
+
 export class SearchItemComponent {
   searchItemForm = new FormGroup({
     name: new FormControl(''),
@@ -25,6 +26,7 @@ export class SearchItemComponent {
   name: any;
   origin: any;
   isFormSubmitted = false;
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -40,7 +42,6 @@ export class SearchItemComponent {
         this.http
           .get(url, {headers})
           .subscribe((response: any) => {
-            // this.router.navigate(['displayItem',JSON.stringify(response)]);
             console.log("food info")
             console.log(response)
             this.routeInfo = response[0];
@@ -54,7 +55,7 @@ export class SearchItemComponent {
           },
           (error: any) => {
             console.log("Error:", error);
-            const errorData = error.error; // Directly use the error object
+            const errorData = error.error;
             if ('suggestions' in errorData) {
               this.errorMessage = 'Could not find food item with provided name and origin.';
               console.log('Suggestions:', errorData.suggestions);

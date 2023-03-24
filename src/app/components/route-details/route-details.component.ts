@@ -1,6 +1,4 @@
-import {ChangeDetectorRef, Component, Input, SimpleChanges} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {CognitoService} from "../../cognito.service";
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-route-details',
@@ -10,13 +8,4 @@ import {CognitoService} from "../../cognito.service";
 export class RouteDetailsComponent {
   @Input()
   routeInfo: any;
-  // constructor(
-  //   private changeDetector: ChangeDetectorRef
-  // ) { }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   // detect changes and reload the map
-  //   this.changeDetector.detectChanges();
-  //   this.getMap();
-  // }
 }
