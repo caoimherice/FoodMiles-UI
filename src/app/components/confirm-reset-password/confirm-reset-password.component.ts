@@ -1,32 +1,36 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { IUser, CognitoService } from '../../cognito.service';
+
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-confirm-reset-password',
+  templateUrl: './confirm-reset-password.component.html',
+  styleUrls: ['./confirm-reset-password.component.css']
 })
-export class SignUpComponent {
+export class ConfirmResetPasswordComponent {
   loading: boolean;
-  isConfirm: boolean;
   user: IUser;
   errorMessage = '';
 
-  constructor(private router: Router,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
               private cognitoService: CognitoService) {
     this.loading = false;
-    this.isConfirm = false;
     this.user = {} as IUser;
   }
 
-  public signUp(): void {
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.user.email = params['email'];
+    });
+  }
+
+  public confirmResetPassword(): void {
     this.loading = true;
-    console.log("signing up");
-    this.cognitoService.signUp(this.user)
+    this.cognitoService.confirmForgotPassword(this.user.email, this.user.code, this.user.password)
       .then(() => {
-        this.loading = false;
-        this.isConfirm = true;
+        this.router.navigate(['/sign-in']);
       })
       .catch((err) => {
         this.loading = false;
@@ -41,14 +45,5 @@ export class SignUpComponent {
         }
       });
   }
-
-  public confirmSignUp(): void {
-    this.loading = true;
-    this.cognitoService.confirmSignUp(this.user)
-      .then(() => {
-        this.router.navigate(['/signIn']);
-      }).catch(() => {
-      this.loading = false;
-    });
-  }
 }
+

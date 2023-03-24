@@ -20,6 +20,8 @@ import { SavedListRowDetailsComponent } from './components/saved-list-row-detail
 import { MapComponent } from './components/map/map.component';
 import { RouteDetailsComponent } from './components/route-details/route-details.component';
 import { DayHourMinutePipe } from './day-hour-minute.pipe';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DayHourMinutePipe } from './day-hour-minute.pipe';
     MapComponent,
     SavedListRowDetailsComponent,
     RouteDetailsComponent,
-    DayHourMinutePipe
+    DayHourMinutePipe,
+    ForgotPasswordComponent,
+    ConfirmResetPasswordComponent
   ],
   imports: [
     BrowserModule,

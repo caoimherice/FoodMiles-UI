@@ -8,7 +8,7 @@
               <h4 class="card-title" style="color: #07391d">Search item</h4>
 <!--              <h6 class="card-subtitle text-muted pb-4">Search food item to view its food miles</h6>-->
 
-              <form class="row form-horizontal" [formGroup]="searchItemForm" (ngSubmit)="onSubmit()">
+              <form class="row form-horizontal pb-2" [formGroup]="searchItemForm" (ngSubmit)="onSubmit()">
                 <div class="col">
                   <div class="row">
                     <div class="col-2">
@@ -33,6 +33,11 @@
                   <button type="submit" class="btn btn-sm" style="background-color: #CFE6D0; color: #07391d">Search Item</button>
                 </div>
               </form>
+              <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+                <p></p>
+                <p *ngIf="suggestions">Suggestions: {{ suggestions }}</p>
+              </div>
             </div>
           </div>
         </div>

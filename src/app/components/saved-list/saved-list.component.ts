@@ -15,6 +15,10 @@ export class SavedListComponent implements OnInit {
   totalLeadTimeList: any[] = [];
   listDetails: any[] = [];
   activeRow: number | null = 0;
+  distanceTrendList: string[] = ['same'];
+  emissionsTrendList: string[] = ['same'];
+  leadTimeTrendList: string[] = ['same'];
+
   constructor(
     private http: HttpClient,
     private cognitoService: CognitoService,
@@ -44,6 +48,11 @@ export class SavedListComponent implements OnInit {
               console.log(this.listDetails)
             }
             this.changeDetector.detectChanges();
+            for (let i = 1; i < this.items.length; i++) {
+              this.distanceTrendList.push(this.totalDistanceList[i] > this.totalDistanceList[i - 1] ? 'up' : this.totalDistanceList[i] < this.totalDistanceList[i - 1] ? 'down' : 'same');
+              this.emissionsTrendList.push(this.totalEmissionsList[i] > this.totalEmissionsList[i - 1] ? 'up' : this.totalEmissionsList[i] < this.totalEmissionsList[i - 1] ? 'down' : 'same');
+              this.leadTimeTrendList.push(this.totalLeadTimeList[i] > this.totalLeadTimeList[i - 1] ? 'up' : this.totalLeadTimeList[i] < this.totalLeadTimeList[i - 1] ? 'down' : 'same');
+            }
           });
       });
   }

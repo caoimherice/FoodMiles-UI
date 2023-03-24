@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { CognitoService } from "../../cognito.service";
 import { Router } from '@angular/router';
 
@@ -15,6 +15,8 @@ export class SearchItemComponent {
     origin: new FormControl(''),
   });
 
+  errorMessage = '';
+  suggestions = '';
   routeInfo: any;
   totalDistance: any;
   totalEmissions: any;
@@ -30,6 +32,7 @@ export class SearchItemComponent {
   ) {}
 
   onSubmit() {
+    this.errorMessage = "";
     const url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/route/' + this.searchItemForm.get('name')?.value + '/'+this.searchItemForm.get('origin')?.value;
     this.cognitoService.getSession()
       .then(session => {
@@ -48,6 +51,19 @@ export class SearchItemComponent {
             this.name = response[5];
             this.origin = response[6];
             this.isFormSubmitted = true;
+          },
+          (error: any) => {
+            console.log("Error:", error);
+            const errorData = error.error; // Directly use the error object
+            if ('suggestions' in errorData) {
+              this.errorMessage = 'Could not find food item with provided name and origin.';
+              console.log('Suggestions:', errorData.suggestions);
+              this.suggestions = errorData.suggestions.map((suggestion: { name: any; origin: any; }) => `${suggestion.name} from ${suggestion.origin}`).join(', ');
+            } else if ('error' in errorData) {
+              this.errorMessage = errorData.error;
+            } else {
+              console.error('Unexpected error object structure:', error.error);
+            }
           });
       });
   }

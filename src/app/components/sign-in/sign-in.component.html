@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="row mt-2" *ngIf="errorMessage">
+    <div class="col-4 mx-auto d-flex justify-content-center">
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
   <div class="body d-md-flex align-items-center justify-content-between">
     <div class="box-1 mt-md-0 mt-5">
       <img src="assets/greenleaves.jpg" alt="image">
@@ -6,7 +13,7 @@
     <div class=" box-2 d-flex flex-column h-100">
       <div class="mt-5">
         <div class="row">
-          <div class="col mb-2" style ="padding-left: 25px">
+          <div class="col mb-2" style ="padding-left: 20px">
             <p class="mb-2 h-1" style="color: #7f4722">Sign in.</p>
             <p class="text-signIn-muted mb-2">Sign in to view your food miles.</p>
           </div>
@@ -14,12 +21,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col mb-2">
-              <div class="col mb-2" style ="padding: 25px">
+              <div class="col mb-2" style ="padding: 20px">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">
               </div>
               <div class="row">
-                <div class="col mb-2" style ="padding: 25px">
+                <div class="col mb-2" style ="padding: 20px">
                   <label for="password" class="form-label">Password:</label>
                   <div class="input-group input-group-sm">
                     <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">
@@ -30,12 +37,20 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col d-grid" style ="padding: 25px">
+                <div class="col d-grid" style ="padding-left: 20px; padding-right: 20px">
                   <button type="button" (click)="signIn()" class="btn btn-sm" style="background-color: #ffede7; color: #7f4722" [disabled]="loading">
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
                     Sign In
                   </button>
                 </div>
+              <div class="row">
+                <div class="col d-grid" style ="padding: 20px">
+                  <button type="button" (click)="forgotPassword()" class="btn btn-sm" style="background-color: #ffede7; color: #7f4722" [disabled]="loading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                    Forgot Password?
+                  </button>
+                </div>
+              </div>
               </div>
             </div>
           </div>
