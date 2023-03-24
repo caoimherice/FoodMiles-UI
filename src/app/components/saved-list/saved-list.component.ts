@@ -7,6 +7,7 @@ import { CognitoService } from "../../cognito.service";
   templateUrl: './saved-list.component.html',
   styleUrls: ['./saved-list.component.css']
 })
+
 export class SavedListComponent implements OnInit {
   items: any;
   createdAtList: any[] = [];
@@ -44,8 +45,6 @@ export class SavedListComponent implements OnInit {
               this.totalEmissionsList.push(item.total_emissions)
               this.totalLeadTimeList.push(item.total_lead_time)
               this.listDetails.push(item.items_list)
-              console.log(this.createdAtList)
-              console.log(this.listDetails)
             }
             this.changeDetector.detectChanges();
             for (let i = 1; i < this.items.length; i++) {

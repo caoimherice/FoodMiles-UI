@@ -1,51 +1,50 @@
 <div style="width: 55%; float: left;">
-<div class= "container p-5">
-  <div class="col"></div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body p-4">
-        <div class="row pb-4">
-          <div class="col">
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th scope="col" style="color: #07391d">#</th>
-                <th scope="col" style="color: #07391d">Created At</th>
-                <th scope="col" style="color: #07391d">Total Distance (km)</th>
-                <th scope="col" style="color: #07391d">Total Emissions (kg CO2)</th>
-                <th scope="col" style="color: #07391d">Total Lead Time</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of createdAtList; let i=index" (mouseover)="showDetails(i)" (mouseout)="hideDetails()" [ngClass]="{ 'table-active': i === activeRow }">
-                <th scope="row" style="color: #07391d">{{i+1}}</th>
-                <td>{{ item }}</td>
-                <td>
-                  {{ (totalDistanceList[i] / 1000) | number: '1.2-2' }}
-                  <i *ngIf="i > 0 && distanceTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
-                  <i *ngIf="i > 0 && distanceTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
-                </td>
-                <td>
-                  {{ totalEmissionsList[i] }}
-                  <i *ngIf="i > 0 && emissionsTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
-                  <i *ngIf="i > 0 && emissionsTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
-                </td>
-                <td>
-                  {{ totalLeadTimeList[i] | dayHourMinute}}
-                  <i *ngIf="i > 0 && leadTimeTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
-                  <i *ngIf="i > 0 && leadTimeTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
-                </td>
-                <div>
-                  <app-row-details *ngIf="i === activeRow" [createdAt]="item" [listDetails]="listDetails[i]"></app-row-details>
-                </div>
-              </tr>
-              </tbody>
-            </table>
+  <div class= "container p-5">
+    <div class="col"></div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body p-4">
+          <div class="row pb-4">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" style="color: #07391d">#</th>
+                    <th scope="col" style="color: #07391d">Created At</th>
+                    <th scope="col" style="color: #07391d">Total Distance (km)</th>
+                    <th scope="col" style="color: #07391d">Total Emissions (kg CO2)</th>
+                    <th scope="col" style="color: #07391d">Total Lead Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of createdAtList; let i=index" (mouseover)="showDetails(i)" (mouseout)="hideDetails()" [ngClass]="{ 'table-active': i === activeRow }">
+                    <th scope="row" style="color: #07391d">{{i+1}}</th>
+                    <td>{{ item }}</td>
+                    <td>
+                      {{ (totalDistanceList[i] / 1000) | number: '1.2-2' }}
+                      <i *ngIf="i > 0 && distanceTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
+                      <i *ngIf="i > 0 && distanceTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
+                    </td>
+                    <td>
+                      {{ totalEmissionsList[i] }}
+                      <i *ngIf="i > 0 && emissionsTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
+                      <i *ngIf="i > 0 && emissionsTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
+                    </td>
+                    <td>
+                      {{ totalLeadTimeList[i] | dayHourMinute}}
+                      <i *ngIf="i > 0 && leadTimeTrendList[i] === 'up'" class="bi bi-arrow-up pink-arrow"></i>
+                      <i *ngIf="i > 0 && leadTimeTrendList[i] === 'down'" class="bi bi-arrow-down pink-arrow"></i>
+                    </td>
+                    <div>
+                      <app-row-details *ngIf="i === activeRow" [createdAt]="item" [listDetails]="listDetails[i]"></app-row-details>
+                    </div>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<!--  <div class="col"></div>-->
   </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { IUser, CognitoService } from '../../cognito.service';
 
 @Component({
@@ -8,14 +7,13 @@ import { IUser, CognitoService } from '../../cognito.service';
   templateUrl: './confirm-reset-password.component.html',
   styleUrls: ['./confirm-reset-password.component.css']
 })
+
 export class ConfirmResetPasswordComponent {
   loading: boolean;
   user: IUser;
   errorMessage = '';
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private cognitoService: CognitoService) {
+  constructor(private route: ActivatedRoute, private router: Router, private cognitoService: CognitoService) {
     this.loading = false;
     this.user = {} as IUser;
   }

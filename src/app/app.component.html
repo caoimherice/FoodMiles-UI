@@ -13,9 +13,6 @@
           <a class="nav-link px-3" routerLink="/signIn" routerLinkActive="active" *ngIf="!(isAuthenticated$ | async)">Sign in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3" routerLink="/profile" routerLinkActive="active" *ngIf="(isAuthenticated$ | async)">Profile</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link px-3" routerLink="/searchItem" routerLinkActive="active" *ngIf="(isAuthenticated$ | async)">Search Item</a>
         </li>
         <li class="nav-item">

@@ -29,7 +29,6 @@ export class ShoppingListComponent implements OnInit{
     this.cognitoService.getSession()
       .then(session => {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken());
-        console.log(headers)
         this.http
           .get('https://gjru6axeok.execute-api.us-east-1.amazonaws.com/shoppingList/details/' + session.getIdToken().payload['cognito:username'], {headers})
           .subscribe((response: any) => {
@@ -62,7 +61,6 @@ export class ShoppingListComponent implements OnInit{
   }
 
   saveList() {
-    console.log("saving list")
     var url = 'https://gjru6axeok.execute-api.us-east-1.amazonaws.com/savedList/list'
     // let headers;
     this.cognitoService.getSession()
@@ -71,13 +69,10 @@ export class ShoppingListComponent implements OnInit{
           'userId': session.getIdToken().payload['cognito:username'],
           'items': this.items
         }
-        console.log(this.items)
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + session.getIdToken().getJwtToken());
-        console.log(headers)
         this.http
           .post(url, data,{headers})
           .subscribe((response) => {
-            console.log(response)
             this.getList()
             this.router.navigate(['savedList']);
           });

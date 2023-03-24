@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { IUser, CognitoService } from '../../cognito.service';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent {
   loading: boolean;
   isConfirm: boolean;
   user: IUser;
   errorMessage = '';
 
-  constructor(private router: Router,
-              private cognitoService: CognitoService) {
+  constructor(private router: Router, private cognitoService: CognitoService) {
     this.loading = false;
     this.isConfirm = false;
     this.user = {} as IUser;

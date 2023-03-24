@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { IUser, CognitoService } from '../../cognito.service';
 
 @Component({
@@ -8,12 +7,12 @@ import { IUser, CognitoService } from '../../cognito.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
+
 export class ForgotPasswordComponent {
   loading: boolean;
   user: IUser;
 
-  constructor(private router: Router,
-              private cognitoService: CognitoService) {
+  constructor(private router: Router, private cognitoService: CognitoService) {
     this.loading = false;
     this.user = {} as IUser;
   }
