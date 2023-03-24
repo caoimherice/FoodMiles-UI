@@ -35,7 +35,7 @@ export class SignInComponent {
           // alert('Invalid email or password. Please try again.');
         } else {
           // display a generic error message for other types of errors
-          alert('An error occurred while signing in. Please try again later.');
+          this.errorMessage = 'An error occurred while signing in. Please try again later.';
         }
     });
   }

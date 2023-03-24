@@ -11,6 +11,7 @@ export class SignUpComponent {
   loading: boolean;
   isConfirm: boolean;
   user: IUser;
+  errorMessage = '';
 
   constructor(private router: Router,
               private cognitoService: CognitoService) {
@@ -21,14 +22,24 @@ export class SignUpComponent {
 
   public signUp(): void {
     this.loading = true;
-    console.log("signing up")
+    console.log("signing up");
     this.cognitoService.signUp(this.user)
       .then(() => {
         this.loading = false;
         this.isConfirm = true;
-      }).catch(() => {
-      this.loading = false;
-    });
+      })
+      .catch((err) => {
+        this.loading = false;
+        if (err.code === "InvalidParameterException") {
+          if (err.message.includes("email")) {
+            this.errorMessage = "Invalid email format.";
+          } else if (err.message.includes("password")) {
+            this.errorMessage = "Invalid password format.";
+          }
+        } else {
+          this.errorMessage = err.message;
+        }
+      });
   }
 
   public confirmSignUp(): void {

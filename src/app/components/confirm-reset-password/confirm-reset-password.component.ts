@@ -11,6 +11,7 @@ import { IUser, CognitoService } from '../../cognito.service';
 export class ConfirmResetPasswordComponent {
   loading: boolean;
   user: IUser;
+  errorMessage = '';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -31,8 +32,17 @@ export class ConfirmResetPasswordComponent {
       .then(() => {
         this.router.navigate(['/sign-in']);
       })
-      .catch(() => {
+      .catch((err) => {
         this.loading = false;
+        if (err.code === "InvalidParameterException") {
+          if (err.message.includes("email")) {
+            this.errorMessage = "Invalid email format.";
+          } else if (err.message.includes("password")) {
+            this.errorMessage = "Invalid password format.";
+          }
+        } else {
+          this.errorMessage = err.message;
+        }
       });
   }
 }
