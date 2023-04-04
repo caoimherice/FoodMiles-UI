@@ -33,7 +33,7 @@ export class SignInComponent {
         if (error.code === 'NotAuthorizedException') {
           this.errorMessage = 'Invalid email or password. Please try again.';
         } else {
-          this.errorMessage = 'An error occurred while signing in. Please try again later.';
+          this.errorMessage = error.message;
         }
     });
   }

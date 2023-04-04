@@ -42,8 +42,6 @@ export class SearchItemComponent {
         this.http
           .get(url, {headers})
           .subscribe((response: any) => {
-            console.log("food info")
-            console.log(response)
             this.routeInfo = response[0];
             this.totalDistance = response[1];
             this.totalEmissions = response[2];

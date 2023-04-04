@@ -13,7 +13,9 @@ export interface IUser {
 @Injectable({
   providedIn: 'root'
 })
+
 export class CognitoService {
+  // boolean behaviour subject to hold users authentication status
   public isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   constructor() {
     Amplify.configure({
@@ -52,10 +54,14 @@ export class CognitoService {
       });
   }
 
+  // updates users authentication status
   public updateAuthentication(): void {
+    // currentUserInfo returns a promise, true if logged in, otherwise false
     // @ts-ignore
    Auth.currentUserInfo()
+     // setting isAuthenticated$ to true if logged in
      .then(user => this.isAuthenticated$.next(!!user))
+     // if not logged in setting isAuthenticated$ to false
      .catch(() => this.isAuthenticated$.next(false));
   }
 
