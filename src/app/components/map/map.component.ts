@@ -56,6 +56,7 @@ export class MapComponent implements OnInit {
       this.map.remove();
     }
 
+    // the map bounds are fitted using the first and last points of the journey to centre the map correctly
     const firstPointString = this.points.points[0];
     const lastPointString = this.points.points[this.points.points.length - 1];
     const [firstLat, firstLng] = firstPointString.split(',');
@@ -86,12 +87,6 @@ export class MapComponent implements OnInit {
     }
     L.geoJSON(this.myLines, {
       style: function(feature) {
-        console.log("style function called");
-        console.log(feature);
-        // @ts-ignore
-        console.log(feature.properties);
-        // @ts-ignore
-        console.log(feature.properties.transport_mode);
         // @ts-ignore
         switch (feature.properties.transport_mode) {
           case "Truck":

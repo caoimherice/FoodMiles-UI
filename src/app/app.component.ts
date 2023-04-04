@@ -10,6 +10,8 @@ import {Observable} from "rxjs/";
 })
 export class AppComponent {
   title = 'FoodMiles-UI';
+
+  // observable to handle asynchronous data stream of user authentication
   public isAuthenticated$: Observable<boolean> = this.cognitoService.isAuthenticated$;
 
   constructor(

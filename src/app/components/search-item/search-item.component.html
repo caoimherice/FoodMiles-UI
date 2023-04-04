@@ -41,7 +41,9 @@
         </div>
       </div>
       <div class="row">
+<!--        inserting components display-item, map and route details following successful search-->
         <div class="col-4"  *ngIf="isFormSubmitted">
+<!--          passing necessary information as inputs to the child components-->
           <app-display-item [name]="name" [origin]="origin" [totalDistance]="totalDistance" [totalEmissions]="totalEmissions" [totalLeadTime]="totalLeadTime"></app-display-item>
         </div>
         <div class="col-8" *ngIf="isFormSubmitted">

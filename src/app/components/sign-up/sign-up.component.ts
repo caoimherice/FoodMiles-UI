@@ -26,12 +26,15 @@ export class SignUpComponent {
     this.cognitoService.signUp(this.user)
       .then(() => {
         this.loading = false;
+        // setting isConfirm to true which will display the next form to validate the users account
         this.isConfirm = true;
       })
       .catch((err) => {
         this.loading = false;
+        // catching any exceptions thrown by signUp in CognitoService
         if (err.code === "InvalidParameterException") {
           if (err.message.includes("email")) {
+            // setting errorMessage to the appropriate error to be shown to user
             this.errorMessage = "Invalid email format.";
           } else if (err.message.includes("password")) {
             this.errorMessage = "Invalid password format.";
